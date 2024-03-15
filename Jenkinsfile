@@ -74,13 +74,7 @@ pipeline {
             }
         }
 
-        stage ('Upload to S3') {
-                
-        }
 
-        stage ('Codedeploy Workload') {
-            
-        }
         
     }    
 }
