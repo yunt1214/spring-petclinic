@@ -48,7 +48,7 @@ pipeline {
                 echo 'Docker Image Build'
                 dir("${env.WORKSPACE}") {
                     sh """
-                        docker build -t docker build -t $ECR_DOCKER_IMAGE:$BUILD_NUMBER .
+                        docker build -t $ECR_DOCKER_IMAGE:$BUILD_NUMBER .
                         docker tag $ECR_DOCKER_IMAGE:$BUILD_NUMBER $ECR_DOCKER_IMAGE:latest
                     """
                 }
