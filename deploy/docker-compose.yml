@@ -5,3 +5,4 @@ services:
   container_name: spring-petclinic
   ports:
     - "80:8080"
+// 커밋메시지 오타 수정
