@@ -10,7 +10,7 @@ pipeline {
         stage('Git clone') {
             steps {
                 echo 'Git clone'
-                git url: 'https://github.com/sjh4616/spring-petclinic.git',
+                git url: 'https://github.com/yunt1214/spring-petclinic.git',
                     branch: 'efficient-webjars'
             }
             post {
