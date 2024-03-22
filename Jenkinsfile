@@ -79,7 +79,7 @@ pipeline {
             steps {
                 echo 'Upload to S3'
                 dir("${env.WORKSPACE}") {
-                   sh 'zip -r deploy.zip ./deploy appspec.yaml'
+                   sh 'zip -r deploy.zip ./deploy appspec.yml'
                    withAWS(region:"${REGION}", credentials:"${AWS_CREDENTIAL_NAME}") {
                        s3Upload(file:"deploy.zip", bucket:"std03-codedeploy-bucket")
                    }
@@ -90,7 +90,7 @@ pipeline {
 
         stage ('Codedeploy Workload') {
             steps {
-                echo "create Codedeploy group"   
+                echo "create Codedeploy group"
                 sh '''
                     aws deploy create-deployment-group \
                     --application-name std03-code-deploy \
@@ -99,7 +99,7 @@ pipeline {
                     --deployment-config-name CodeDeployDefault.OneAtATime \
                     --service-role-arn arn:aws:iam::257307634175:role/std03-codedeploy-service-role
                     '''
-                echo "Codedeploy Workload"   
+                echo "Codedeploy Workload"
                 sh '''
                     aws deploy create-deployment --application-name std03-code-deploy \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
@@ -110,5 +110,5 @@ pipeline {
             }
         }
         
-    }    
+    }
 }
