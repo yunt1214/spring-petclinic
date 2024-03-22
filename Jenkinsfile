@@ -61,6 +61,7 @@ pipeline {
                 script {
                     sh 'rm -f ~/.dockercfg ~/.docker/config.json || true'
                     docker.withRegistry("https://${ECR_REPOSITORY}", "ecr:${REGION}:${AWS_CREDENTIAL_NAME}") {
+                        docker.image("${ECR_DOCKER_IMAGE}:${BUILD_NUMBER}").push()
                         docker.image("${ECR_DOCKER_IMAGE}:latest").push()
                     }
                 }
@@ -73,8 +74,6 @@ pipeline {
                 sh "docker image prune -f --all --filter \"until=1h\""
             }
         }
-
-
         
     }    
 }
