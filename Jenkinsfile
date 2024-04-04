@@ -93,7 +93,7 @@ pipeline {
                 echo "create Codedeploy group"
                 sh '''
                     aws deploy create-deployment-group \
-                    --application-name std03-spring-petclinic \
+                    --application-name std03-code-deploy \
                     --auto-scaling-groups std03-asg-target \
                     --deployment-group-name std03-code-deploy-${BUILD_NUMBER} \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
