@@ -101,7 +101,7 @@ pipeline {
                     '''
                 echo "Codedeploy Workload"
                 sh '''
-                    aws deploy create-deployment --application-name std03-spring-petclinic \
+                    aws deploy create-deployment --application-name std03-code-deploy \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
                     --deployment-group-name std03-code-deploy-${BUILD_NUMBER} \
                     --s3-location bucket=std03-codedeploy-bucket,bundleType=zip,key=deploy.zip
