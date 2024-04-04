@@ -93,7 +93,7 @@ pipeline {
                 echo "create Codedeploy group"
                 sh '''
                     aws deploy create-deployment-group \
-                    --application-name std03-code-deploy \
+                    --application-name std03-spring-petclinic \
                     --auto-scaling-groups std03-asg-target \
                     --deployment-group-name std03-code-deploy-${BUILD_NUMBER} \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
@@ -101,7 +101,7 @@ pipeline {
                     '''
                 echo "Codedeploy Workload"
                 sh '''
-                    aws deploy create-deployment --application-name std03-code-deploy \
+                    aws deploy create-deployment --application-name std03-spring-petclinic \
                     --deployment-config-name CodeDeployDefault.OneAtATime \
                     --deployment-group-name std03-code-deploy-${BUILD_NUMBER} \
                     --s3-location bucket=std03-codedeploy-bucket,bundleType=zip,key=deploy.zip
